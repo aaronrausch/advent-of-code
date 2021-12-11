@@ -11,7 +11,6 @@ def increment(octopi):
     for i, row in enumerate(octopi):
         for j, oc in enumerate(row):
             octopi[i][j] += 1
-    return None
 
 def simultaneous(octopi):
     simul = True
@@ -43,7 +42,6 @@ def flash(octopi, i, j, done):
 
     return cycle_flashes
 
-# PART 1
 cycle, flashes, done, searching = 0, 0, set(), True
 checks = [100]
 while searching:
@@ -57,6 +55,7 @@ while searching:
 
     if cycle in checks:
         print(f'CYCLE {cycle} : {flashes}')
+
     if simultaneous(octopi):
-        print(f'SIMULTANEOUS : {cycle}')
-        searching = False
+        print(f'SIMULTANEOUS FLASH : {cycle}')
+        break
