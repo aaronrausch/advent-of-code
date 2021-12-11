@@ -36,14 +36,15 @@ def flash(octopi, i, j, done):
         octopi[i][j] = 0
 
         for i, j in nearby:
-            if inbounds(i, j) and octopi[i][j] != 0: # check that octopus did not flash on the same cycle
+            if inbounds(i, j) and (octopi[i][j] != 0): #s check that octopus did not flash on the same cycle
                 octopi[i][j] += 1
                 cycle_flashes += flash(octopi, i, j, done)
 
     return cycle_flashes
 
-cycle, flashes, done, searching = 0, 0, set(), True
-checks = [100]
+cycle, flashes = 0, 0
+done = set()
+searching = True
 while searching:
 
     cycle += 1
@@ -53,9 +54,9 @@ while searching:
         for j, oc in enumerate(row):
             flashes += flash(octopi, i, j, done)
 
-    if cycle in checks:
+    if cycle == 100:
         print(f'CYCLE {cycle} : {flashes}')
 
     if simultaneous(octopi):
         print(f'SIMULTANEOUS FLASH : {cycle}')
-        break
+        searching = False
