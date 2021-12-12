@@ -3,7 +3,7 @@ with open('inputs/2021-12-09.txt') as file:
     cave = [l for l in file.read().splitlines()]
     cave = [[int(el) for el in row] for row in cave]
 
-def neighbors(r, c):
+def find_neighbors(r, c):
     return [(r + 1, c), (r - 1, c), (r, c - 1), (r, c + 1)]
 
 def inbounds(r, c):
@@ -24,7 +24,7 @@ def find_lows(cave):
     for r, _ in enumerate(cave):
         for c, _ in enumerate(cave[0]):
             lowest = True
-            for rc, cc in neighbors(r, c):
+            for rc, cc in find_neighbors(r, c):
                 if inbounds(rc, cc) and (cave[r][c] >= cave[rc][cc]):
                     lowest = False
             if lowest: low_points.append(cave[r][c])
@@ -50,7 +50,7 @@ def explore_size(cave, r, c, visited):
             visited.add(current)
             size += 1
 
-            neighbors = [(r + 1, c), (r - 1, c), (r, c - 1), (r, c + 1)]
+            neighbors = find_neighbors(r, c)
             for coord in neighbors:
                 r, c = coord
                 if checks(r, c, visited):
