@@ -4,7 +4,9 @@ from itertools import pairwise
 from collections import Counter
 
 '''This problem was very similar to the lanternfish problem, posted on 2021-12-06.
-For some reason, I struggled a lot more with this problem, even though the implementation ended up being somewhat similar. It took some hints from others for me to figure out how to approach part 2, and especially how to extract the individual letters from the pairs.'''
+For some reason, I struggled a lot more with this problem, even though the implementation
+ended up being somewhat similar. It took some hints from others for me to figure out how
+to approach part 2, and especially how to extract the individual letters from the pairs.'''
 
 with open('inputs/2021-12-14.txt') as file:
     f = file.read()
